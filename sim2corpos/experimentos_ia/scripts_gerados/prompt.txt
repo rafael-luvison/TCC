@@ -1,0 +1,11 @@
+Escreva um programa Python COMPLETO e autossuficiente que resolva o seguinte problema de dois corpos com gravitacao newtoniana em 2D, em unidades adimensionais com G = 1.0.
+
+Corpo 1: massa m1 = 1.0, posicao inicial = (-0.090909, 0.0), velocidade inicial = (0.0, -0.095346)
+Corpo 2: massa m2 = 0.1, posicao inicial = (0.909091, 0.0), velocidade inicial = (0.0, 0.953463)
+
+Requisitos do programa:
+- Ao ser executado (python script.py), deve calcular as posicoes dos dois corpos de t=0 a t=17 e IMPRIMIR no stdout uma tabela CSV com exatamente estas colunas e 18 linhas de dados (t = 0, 1, 2, ..., 17):
+t,x1,y1,x2,y2
+- Use apenas a biblioteca padrao do Python e/ou numpy e scipy (nada que precise instalar).
+- O metodo de resolucao e a sua escolha.
+- Responda APENAS com o codigo Python, dentro de um unico bloco ```python ... ```, sem nenhum texto antes ou depois.

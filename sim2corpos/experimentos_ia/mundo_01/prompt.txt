@@ -1,0 +1,11 @@
+Considere um problema de dois corpos com gravitação newtoniana em 2D, em unidades adimensionais com G = 1.
+
+Corpo 1: massa m1 = 1.0, posição inicial (x, y) = (-0.090909, 0.000000), velocidade inicial (vx, vy) = (0.000000, -0.095346)
+Corpo 2: massa m2 = 0.1, posição inicial (x, y) = (0.909091, 0.000000), velocidade inicial (vx, vy) = (0.000000, 0.953463)
+
+Calcule a trajetória dos dois corpos de t = 0 até t = 17, pelo método que preferir, e devolva as posições de ambos amostradas a cada 1 unidade de tempo (t = 0, 1, 2, 3, ...).
+
+Responda APENAS com a tabela CSV, sem nenhum texto antes ou depois e sem cerca de código, no formato exato:
+t,x1,y1,x2,y2
+
+A tabela deve ter exatamente 18 linhas de dados (além do cabeçalho), com pelo menos 6 casas decimais. A primeira linha de dados é t=0 com as posições iniciais dadas acima.

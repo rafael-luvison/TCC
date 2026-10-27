@@ -1,0 +1,2 @@
+opus-4.8_app-desktop.csv: T_exato=5.9908  RMSE=4.052e-06  erro_final corpo2=5.988e-06 (t=17)  raio final corpo2=0.909087 (exato 0.909091)
+haiku-4.5_app.csv: T_exato=5.9908  RMSE=4.914e-01  erro_final corpo2=1.430e+00 (t=17)  raio final corpo2=0.784535 (exato 0.909091)

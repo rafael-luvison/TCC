@@ -1,0 +1,50 @@
+```python
+import math
+
+def f(t, Y):
+    x1, y1, vx1, vy1, x2, y2, vx2, vy2 = Y
+    dx = x2 - x1
+    dy = y2 - y1
+    r = math.sqrt(dx*dx + dy*dy)
+    r3 = r * r * r
+    if r == 0:
+        ax1, ay1, ax2, ay2 = 0.0, 0.0, 0.0, 0.0
+    else:
+        factor1 = m2 / r3
+        factor2 = m1 / r3
+        ax1 = factor1 * dx
+        ay1 = factor1 * dy
+        ax2 = -factor2 * dx
+        ay2 = -factor2 * dy
+    return [vx1, vy1, ax1, ay1, vx2, vy2, ax2, ay2]
+
+def rk4_step(func, t, y, dt):
+    k1 = func(t, y)
+    k2 = func(t + dt/2, [y_i + dt/2 * k1_i for y_i, k1_i in zip(y, k1)])
+    k3 = func(t + dt/2, [y_i + dt/2 * k2_i for y_i, k2_i in zip(y, k2)])
+    k4 = func(t + dt, [y_i + dt * k3_i for y_i, k3_i in zip(y, k3)])
+    return [y_i + dt/6 * (k1_i + 2*k2_i + 2*k3_i + k4_i) for y_i, k1_i, k2_i, k3_i, k4_i in zip(y, k1, k2, k3, k4)]
+
+m1 = 1.0
+m2 = 0.1
+Y0 = [-0.090909, 0.0, 0.0, -0.095346, 0.909091, 0.0, 0.0, 0.953463]
+dt = 0.01
+total_time = 17.0
+num_steps = int(total_time / dt)
+output_interval = 100
+
+results = []
+t = 0.0
+Y = Y0
+results.append([t, Y[0], Y[1], Y[4], Y[5]])
+
+for step in range(1, num_steps + 1):
+    Y = rk4_step(f, t, Y, dt)
+    t += dt
+    if step % output_interval == 0:
+        results.append([t, Y[0], Y[1], Y[4], Y[5]])
+
+print("t,x1,y1,x2,y2")
+for row in results:
+    print(f"{row[0]:.6f},{row[1]:.6f},{row[2]:.6f},{row[3]:.6f},{row[4]:.6f}")
+```

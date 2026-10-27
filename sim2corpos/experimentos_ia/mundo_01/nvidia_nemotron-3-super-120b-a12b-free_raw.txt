@@ -1,0 +1,523 @@
+We need to compute the trajectory of a two-body gravitational system in 2D, dimensionless units G=1. The bodies: m1=1 at (-0.090909, 0) with initial velocity (0, -0.095346). m2=0.1 at (0.909091, 0) with velocity (0, 0.953463). So they are initially on x-axis separated by distance: 0.909091 - (-0.090909) = 1.0 exactly? Indeed -0.090909 + 0.909091 = 0.818182? Wait compute: x2 - x1 = 0.909091 - (-0.090909) = 1.000000 exactly if numbers given are approximations: -0.090909 = -1/11? Actually 0.090909 is 1/11 approx. 0.909091 = 10/11 approx. So x1 = -1/11, x2 = 10/11. Difference = 11/11 = 1. So initial separation is exactly 1. Good.
+
+Initial velocities: v1y = -0.095346; v2y = 0.953463. Possibly these are such that total momentum zero? Let's check: m1*v1y + m2*v2y = 1*(-0.095346) + 0.1*(0.953463) = -0.095346 + 0.0953463 = approx 0.0000003 (close to zero). So indeed initial momentum in y is zero (circular center-of-mass at rest? Actually x momentum zero because velocities x=0). So center of mass stationary? Compute COM position: (m1*x1 + m2*x2)/(m1+m2) = (1*(-1/11) + 0.1*(10/11))/1.1 = (-1/11 + 1/11)/1.1 = 0. So COM at x=0. And y: both y=0, COM y=0. So COM at origin initially stationary.
+
+Thus system is a binary orbit with total mass M = 1.1. The reduced mass mu = m1*m2/(m1+m2) = (1*0.1)/1.1 = 0.09090909... = 1/11. The relative motion of separation vector r = r2 - r1. Initially r = (1,0). Relative velocity v_rel = v2 - v1 = (0, 0.953463 - (-0.095346)) = (0, 1.048809). Actually 0.953463 +0.095346 = 1.048809. So initial relative velocity is purely in y direction, magnitude 1.048809. So we have a Kepler problem: relative motion under central force with gravitational parameter mu_G = G*(m1+m2) = 1*1.1 = 1.1? Actually the equation for relative motion: d^2 r/dt^2 = - G (m1+m2) r / r^3. So effective gravitational parameter mu = G (M) = 1.1.
+
+Thus we have an orbit with specific angular momentum h = |r x v_rel| = r * v_perp (since r along x, v along y) = 1 * 1.048809 = 1.048809. Specific energy epsilon = v^2/2 - mu/r = (1.048809^2)/2 - 1.1/1 = (1.099999? Let's compute: 1.048809^2 = approx 1.099999? Actually 1.048809^2 = (1.0488)^2 ~ 1.0999. Let's compute precisely: 1.048809 * 1.048809 = 1.099999? It might be exactly something like 1.099999? We'll compute: 1.048809^2 = (1 + 0.048809)^2 = 1 + 2*0.048809 + 0.048809^2 ≈ 1 + 0.097618 + 0.002381 = 1.100 - approx 0.000? Actually 0.048809^2 = 0.002381? Let's compute: 0.048809*0.048809 = (0.05-0.001191)^2 = 0.0025 -2*0.05*0.001191 +0.001191^2 ≈0.0025 -0.0001191 +0.000001418=0.0023823. So sum: 1+0.097618+0.0023823 =1.099, actually 1.099... Wait 1+0.097618=1.097618; +0.0023823=1.1000003. So indeed it's ~1.1000003. So v^2 ≈1.1000003. Then v^2/2 ≈0.55000015. Then epsilon = 0.55000015 - 1.1 = -0.54999985. So negative, bound orbit (elliptical). Specific energy epsilon = -mu/(2a) => a = -mu/(2 epsilon). Compute: mu=1.1; epsilon≈ -0.55 => a = -1.1/(2 * -0.55) = 1.1/(1.1) =1. So semi-major axis a = 1 (exact). Nice! So orbit is an ellipse with a=1. Since initial r=1, that is at either apoapsis or periapsis depending on velocity direction. Since v is perpendicular to r, at that point r is either apside. Since energy negative and a=1, and r=1 at that point, we can compute eccentricity: For an ellipse, r = a (1 - e^2) / (1 + e cosθ) where θ true anomaly measured from periapsis. At apsides, cosθ = ±1. At periapsis r_p = a(1-e); at apoapsis r_a = a(1+e). Since r=1 and a=1, we have r/a =1. So either 1 = 1 - e (periapsis) => e=0, or 1 = 1+e (apoapsis) => e=0. Both give e=0. Actually if e=0 then r=a always (circular). Let's check: If e=0, r=a constant =1. So the orbit is circular? But we have v perpendicular magnitude sqrt(mu/r) for circular orbit: v_circ = sqrt(mu/r) = sqrt(1.1/1) = sqrt(1.1) ≈1.0488088. Indeed our v_rel magnitude is approx 1.048809, matches sqrt(1.1). So it's a circular orbit! Indeed the relative motion is a circle of radius 1 with angular speed sqrt(mu/r^3) = sqrt(1.1) ≈1.048809 rad/s? Actually angular speed ω = sqrt(mu/r^3) = sqrt(1.1/1)= sqrt(1.1)=1.048809. So period T = 2π/ω = 2π / sqrt(1.1). Compute: sqrt(1.1)=1.048808848. So T = 2π /1.048808848 = (6.283185307)/1.048808848 ≈5.989... Let's compute: 6.283185307 /1.048808848 = 5.989... Actually compute precisely: 6.283185307/1.048808848 = 5.989... Let's do division: 1.0488*6 = 6.2928, slightly above, so maybe 5.989. Let's compute: 6.283185307 /1.048808848 =? Using approximation: 1/1.0488 ≈0.95346. Multiply by 6.283185 = 6.283185*0.95346 ≈5.990. So T≈5.990. So period about 5.99 time units.
+
+We need positions from t=0 to t=17 sampled every 1 unit. Since motion is circular relative motion, we can compute positions of each body relative to COM.
+
+We have COM stationary at origin (since total momentum zero and initial COM at origin). So we can compute positions as:
+
+r1 = - (m2 / M) * r (vector from body1 to body2? Actually relative vector r = r2 - r1. COM condition: m1 r1 + m2 r2 = 0 => r1 = - (m2 / M) r, r2 = (m1 / M) r. Check: r2 - r1 = r, and m1 r1 + m2 r2 =0.
+
+Thus given r(t) = (cos(ω t), sin(ω t)) * r0? Actually initial r at t=0 is (1,0). With v_rel initial (0, +v). That corresponds to r rotating counterclockwise? Since at t=0, r points along +x. v_rel is along +y. So dr/dt = v_rel = (0, +v). So derivative of (cos, sin) at t=0: derivative of (cos, sin) = (-sin, cos) * ω. At t=0, (-sin0, cos0) = (0,1) * ω => (0, ω). So to match v_rel = (0, +v), we need ω = v (since r0=1). Indeed ω = v_rel magnitude = sqrt(mu) = 1.048808848. So r(t) = (cos(ω t), sin(ω t)). Good.
+
+Thus r1(t) = - (m2 / M) * r(t) = - (0.1 / 1.1) * (cos, sin) = - (0.0909090909...) * (cos, sin). r2(t) = (m1 / M) * r(t) = (1 / 1.1) * (cos, sin) = (0.90909090909...) * (cos, sin). Indeed initial positions: at t=0, cos=1, sin=0 => r1 = (-0.09090909,0), r2 = (0.90909091,0) matches given.
+
+Thus we can compute positions for integer t from 0 to 17.
+
+Compute ω = sqrt(mu) = sqrt(1.1). Let's compute with high precision: sqrt(1.1) =? Use known: sqrt(1.1) ≈ 1.0488088481701515? Let's compute more precisely: Using approximation: sqrt(1.1) = sqrt(11/10) = sqrt(11)/sqrt(10) ≈ 3.31662479/3.16227766 = 1.048808848. Yes.
+
+Thus ω = 1.0488088481701515.
+
+Now compute angle θ = ω * t (radians). Then cosθ, sinθ.
+
+We need at least 6 decimal places.
+
+We'll compute for t=0..17.
+
+Let's compute using high precision manually? We'll do step by step with enough accuracy.
+
+We can compute using series or approximate. Let's compute ω * t for each t and then cos, sin.
+
+Better to compute using maybe known values? Not necessary.
+
+We'll compute with sufficient precision (maybe 10 decimal) then round to 6.
+
+We'll do calculations.
+
+First, define ω = 1.0488088481701515.
+
+Now compute θ_t = ω * t.
+
+t=0: θ=0 => cos=1, sin=0.
+
+t=1: θ=1.0488088481701515 rad.
+
+Compute cos and sin.
+
+We can use calculator mental? Let's approximate using high precision.
+
+We can compute using known values: cos(1.0488) ~? Let's compute using Taylor or use known cos(1) etc. Better to compute using maybe splitting: Use cos and sin of 1.048808848.
+
+We can compute using high precision via iterative method? Might be easier to compute using a calculator approach manually? Might be tedious but doable with sufficient accuracy.
+
+Alternative: Since the motion is circular with period ~5.99, after t=6 approx one full revolution (actually 5.99). So we can compute using modulo 2π.
+
+Compute 2π = 6.283185307179586.
+
+Thus after t=6, angle = ω*6 = 6 *1.048808848 = 6.292853089020909? Actually compute: 1.048808848 *6 = 6.292853088... Let's compute: 1.048808848 * 5 = 5.24404424; plus one more = 6.292853088. Slightly above 2π (6.283185307) by about 0.00966778 rad (~0.554 degrees). So after t=6, angle is ~0.00966778 rad beyond full circle.
+
+Thus we can compute angles mod 2π easily: θ_mod = ω*t - floor(ω*t/(2π))*2π.
+
+But maybe easier compute directly using high precision with some help.
+
+Let's compute ω*t for each t and then reduce mod 2π.
+
+We'll compute ω*t for t=0..17.
+
+We'll also compute cos and sin using maybe known values for small angles after reduction.
+
+Let's compute multiples of ω:
+
+We can compute ω precisely: 1.0488088481701515.
+
+Compute for t:
+
+t=0: 0
+
+t=1: 1.0488088481701515
+
+t=2: 2.097617696340303
+
+t=3: 3.1464265445104545
+
+t=4: 4.195235392680606
+
+t=5: 5.2440442408507575
+
+t=6: 6.292853089020909
+
+t=7: 7.3416619371910605
+
+t=8: 8.390470785361212
+
+t=9: 9.439279633531363
+
+t=10: 10.488088481701515
+
+t=11: 11.536897329871666
+
+t=12: 12.585706178041818
+
+t=13: 13.634515026211969
+
+t=14: 14.68332387438212
+
+t=15: 15.732132722552272
+
+t=16: 16.780941570722423
+
+t=17: 17.829750418892574
+
+Now reduce each modulo 2π (6.283185307179586).
+
+Compute quotient q = floor(θ / 2π). Then remainder r = θ - q*2π.
+
+We'll compute for each t.
+
+First compute 2π = 6.283185307179586.
+
+t=0: θ=0 => q=0, r=0.
+
+t=1: θ=1.048808848 < 2π => q=0, r=1.048808848.
+
+t=2: θ=2.097617696 < 2π => q=0, r=2.097617696.
+
+t=3: θ=3.146426545 < 2π => q=0, r=3.146426545.
+
+t=4: θ=4.195235393 < 2π => q=0, r=4.195235393.
+
+t=5: θ=5.244044241 < 2π => q=0, r=5.244044241.
+
+t=6: θ=6.292853089 > 2π. Compute q = floor(6.292853089 /6.283185307) = floor(1.001538? Actually difference is 0.00966778, so q=1. So r = θ - 1*2π = 6.292853089 - 6.283185307 = 0.009667782 (approx). Let's compute more precisely: 6.292853089020909 - 6.283185307179586 = 0.009667781841323.
+
+t=7: θ=7.341661937. Divide by 2π: 7.341661937 /6.283185307 = 1.168... Actually compute: 6.283185307*1 =6.283185307; remainder = 1.058476630? Let's compute: 7.3416619371910605 - 6.283185307179586 = 1.0584766300114745. That's less than 2π, so q=1, r=1.0584766300114745.
+
+t=8: θ=8.390470785. Subtract 2π: 8.390470785361212 - 6.283185307179586 = 2.107285478181626. q=1, r=2.107285478181626.
+
+t=9: θ=9.439279634. Subtract 2π: 9.439279633531363 - 6.283185307179586 = 3.156094326351777. q=1, r=3.156094326351777.
+
+t=10: θ=10.488088482. Subtract 2π: 10.488088481701515 - 6.283185307179586 = 4.204903174521929. q=1, r=4.204903174521929.
+
+t=11: θ=11.536897330. Subtract 2π: 11.536897329871666 - 6.283185307179586 = 5.25371202269208. q=1, r=5.25371202269208.
+
+t=12: θ=12.585706178. Subtract 2π: 12.585706178041818 - 6.283185307179586 = 6.302520870862232. This is >2π? Actually 6.3025 >6.283185, so we need subtract another 2π? Let's compute: 6.302520870862232 - 6.283185307179586 = 0.019335563682646. So q=2? Let's do systematically: q = floor(θ/2π). θ/2π =12.585706178/6.283185307 ≈2.003... Actually 2*6.283185307=12.566370614; remainder =0.019335564. So q=2, r=0.019335563682646.
+
+t=13: θ=13.634515026. Subtract 2*2π = 12.566370614 => remainder = 1.068144412? Let's compute: 13.634515026211969 - 12.566370614359172 = 1.068144411852797. q=2, r=1.068144411852797.
+
+t=14: θ=14.683323874. Subtract 2*2π: 14.68332387438212 -12.566370614359172 = 2.116953260022948. q=2, r=2.116953260022948.
+
+t=15: θ=15.732132723. minus 12.566370614 = 3.165762108193100? Let's compute: 15.732132722552272 -12.566370614359172 = 3.165762108193100. q=2, r=3.165762108193100.
+
+t=16: θ=16.780941571. minus 12.566370614 = 4.214570956363251? Actually compute: 16.780941570722423 -12.566370614359172 = 4.214570956363251. q=2, r=4.214570956363251.
+
+t=17: θ=17.829750419. minus 12.566370614 = 5.263379804533402? Let's compute: 17.829750418892574 -12.566370614359172 = 5.263379804533402. q=2, r=5.263379804533402.
+
+Check that r < 2π for all: yes.
+
+Now we need cos(r) and sin(r) for each remainder.
+
+We can compute using series or approximate using known values? Let's compute each using high precision manually? Could use approximations.
+
+But maybe easier: Since we know the motion is circular with angular speed ω, we can compute positions directly using cos(ω t) and sin(ω t) using maybe known values for t multiples? But we need numeric.
+
+We can compute using a calculator approach: Use cos and sin of the remainder angles.
+
+Let's compute each remainder and then cos/sin using maybe known values or approximations via high-precision manual? Could use small angle approximations for small remainders (like t=6 remainder ~0.00966778 rad). For others, we need more.
+
+Alternatively, we could compute using complex exponent: e^{i ω t} = (cos + i sin). Could compute using recurrence: Since we know the angle increments by ω each step, we could iteratively update cos and sin using rotation matrix: (cos_{n+1}, sin_{n+1}) = (cos_n cos ω - sin_n sin ω, sin_n cos ω + cos_n sin ω). Starting from (cos0, sin0) = (1,0). This may be easier to compute with high precision using known cos ω and sin ω (i.e., cos(ω) and sin(ω)). Since ω = sqrt(1.1). Compute cos ω and sin ω once, then iterate.
+
+Let's compute cos ω and sin ω where ω = 1.0488088481701515 rad.
+
+We can compute using series or maybe known: cos(1.0488) and sin(1.0488). We can approximate using high precision manually? Could compute using maybe using known values: cos(1) = 0.540302305868, sin(1)=0.841470984808. For extra 0.048808848 rad, we can use addition formulas: cos(a+b) = cos a cos b - sin a sin b; sin(a+b) = sin a cos b + cos a sin b. Let a=1 rad, b=0.048808848 rad.
+
+Compute cos b and sin b for b=0.048808848 rad (small). Use series: cos b ≈ 1 - b^2/2 + b^4/24 - ... ; sin b ≈ b - b^3/6 + b^5/120 ...
+
+b = 0.048808848.
+
+b^2 = 0.002382? Let's compute: 0.048808848^2. 0.05^2=0.0025; adjust: (0.0488)^2 = 0.00238144 approx. Let's compute more precisely: 0.048808848 * 0.048808848.
+
+Compute: 0.048808848 * 0.048808848 = (48.808848e-3)^2 = (48.808848^2)*1e-6. 48.808848^2 approx? 48.8^2=2381.44; plus corrections. Let's do precise: 48.808848*48.808848.
+
+We can compute using high precision: 48.808848 * 48.808848.
+
+48.808848*48 = 2342.824704; plus 48.808848*0.808848 = ?
+
+But maybe easier: use approximate: b^2 = (0.0488)^2 ≈0.00238144. We'll need more accuracy for cos and sin to 1e-12 maybe? But final positions need 6 decimal places, so we need cos/sin to about 1e-6 maybe? Actually final positions will be multiplied by factors 0.0909 or 0.9091, so error in cos/sin of 1e-6 leads to position error ~1e-6*0.9 ~9e-7, which is okay for 6 decimal places? Actually we need 6 decimal places after decimal point, so error less than 0.5e-6. So we need cos/sin accuracy about 0.5e-6 /0.9 ≈0.6e-6. So we need about 1e-6 absolute accuracy. So using approximations with error <1e-6 is fine. So we can compute cos and sin with enough precision using series up to b^3 maybe.
+
+Let's compute cos b and sin b to high accuracy.
+
+b = 0.0488088481701515? Actually b = ω - 1 = 0.0488088481701515 (since ω = 1 + b). Indeed ω = 1.0488088481701515, so b = 0.0488088481701515.
+
+Compute b^2: Let's compute precisely.
+
+b = 0.0488088481701515
+
+b^2 = (0.0488088481701515)^2.
+
+We can compute using high precision multiplication.
+
+Let’s compute using splitting: b = 0.0488 + 0.0000088481701515? Actually 0.048808848 = 0.0488 + 0.000008848. But we need more precise.
+
+Better: Use calculator-like approach manually? Let's do high precision using arbitrary precision mental? Might be tedious.
+
+Alternative: Compute cos ω and sin ω directly using known values? Could use that ω = sqrt(1.1). Could compute cos(sqrt(1.1)) using series? Might be similar difficulty.
+
+Maybe easier: Instead of computing cos ω and sin ω, we can compute cos and sin of each remainder directly using series or using known values for angles like multiples of π? Not.
+
+Given we only need up to t=17, we can compute cos and sin for each remainder using maybe high-precision approximate with a few terms of Taylor series around 0 for small remainders, and for larger remainders we can reduce to known angles? But many remainders are not small.
+
+We could compute using complex exponentiation by repeated multiplication using cos ω and sin ω approximated to sufficient accuracy (like 1e-12) using maybe known high-precision values from external knowledge? Could approximate using high-precision known constants? Could compute using series for cos and sin of ω directly using maybe 10 terms; that might be okay.
+
+But perhaps simpler: we can compute positions using the fact that the motion is uniform circular motion with period T = 2π/ω. Since we have times at integer steps, we can compute angle modulo 2π as we did, and then compute cos and sin of that angle using maybe high-precision approximate using known values? We could use a high-precision approximation for cos and sin using e.g., the CORDIC algorithm mentally? Might be heavy.
+
+Alternative: Use the fact that we can compute positions using the exact solution in terms of initial conditions: Since it's circular, we can also compute using the fact that the velocity vector rotates at same angular speed. Could compute using complex numbers: initial relative position r0 = (1,0); initial relative velocity v0 = (0, v) where v = ω (since r0=1). Then r(t) = r0 cos(ω t) + (v0/ω) sin(ω t). Because for circular motion: r(t) = r0 cos(ω t) + (v0/ω) sin(ω t). Indeed, solution of harmonic oscillator: r'' = -ω^2 r, with ω^2 = mu/r0^3? Actually for circular orbit with radius constant, the equation is r'' = -ω^2 r where ω^2 = mu/r0^3 = mu (since r0=1). So ω = sqrt(mu). So indeed r(t) = r0 cos(ω t) + (v0/ω) sin(ω t). With r0 = (1,0), v0 = (0, ω). Then v0/ω = (0,1). So r(t) = (cos(ω t), sin(ω t)). Same as earlier.
+
+Thus we need cos and sin of ω t.
+
+We can compute using maybe known values for ω t multiples? Not simple.
+
+Given the limited number of points (18), we could compute using high-precision approximate with a calculator-like approach manually with sufficient accuracy.
+
+Let's attempt to compute cos and sin for each θ = ω t using high-precision series or using known values for cos and sin of multiples of ω? Could use recurrence: we can compute cos and sin iteratively using cos ω and sin ω with sufficient precision. So we just need cos ω and sin ω to high enough precision (maybe 1e-12). Then we can propagate using double-angle formulas? Actually we can compute using recurrence: given (c_n, s_n) = (cos(n ω), sin(n ω)), then (c_{n+1}, s_{n+1}) = (c_n cos ω - s_n sin ω, s_n cos ω + c_n sin ω). So we need cos ω and sin ω.
+
+Thus compute cos ω and sin ω accurately.
+
+Let's compute ω = sqrt(1.1). Use high-precision method: compute sqrt(1.1) using maybe Newton's method.
+
+We know sqrt(1.1) = 1.0488088481701515... I recall that value from memory. Let's verify with high precision: using known sqrt(1.1) = 1.0488088481701515? I think that's correct to 16 decimal places. Let's verify by squaring: (1.0488088481701515)^2 = ?
+
+Compute: (1.048808848)^2 = 1.099999? Let's compute more precisely: Use (1 + x)^2 = 1 + 2x + x^2, where x=0.0488088481701515.
+
+2x = 0.0976176963403030
+
+x^2 = (0.0488088481701515)^2. Let's compute x^2 precisely to see if sum equals 1.1.
+
+Compute x^2: we can compute using high precision: 0.0488088481701515^2.
+
+We can compute using decimal multiplication:
+
+0.0488088481701515 * 0.0488088481701515.
+
+Break into parts: Let a = 0.0488, b = 0.0000088481701515.
+
+But maybe easier: Use known: (sqrt(1.1))^2 = 1.1 exactly. So if we trust the value, it's correct.
+
+Thus we accept ω = 1.0488088481701515.
+
+Now compute cos ω and sin ω.
+
+We can compute using series or using high-precision known values? Possibly we can recall cos(1.0488) and sin(1.0488) from memory? Not likely.
+
+We can compute using maybe using the fact that ω = arccos(??) Not.
+
+Let's compute using high-precision manual methods: Use Taylor series around 0? Not good because ω ~1.05 rad, not small. Could compute cos and sin using using known values for cos(1) and sin(1) plus small correction b as earlier.
+
+We have cos ω = cos(1 + b) = cos1 cos b - sin1 sin b.
+
+Similarly sin ω = sin1 cos b + cos1 sin b.
+
+We know cos1 and sin1 to high precision: cos1 = 0.5403023058681398, sin1 = 0.8414709848078965 (these are known to many digits). Good.
+
+Now we need cos b and sin b for b = 0.0488088481701515.
+
+We can compute cos b and sin b using series to enough terms (b^5 maybe) to get 1e-12 accuracy.
+
+b ≈ 0.04880884817.
+
+Compute b^2, b^3, b^4, b^5.
+
+Let's compute with high precision.
+
+b = 0.0488088481701515.
+
+b^2 = b * b.
+
+Compute using high precision multiplication:
+
+We can compute using decimal:
+
+0.0488088481701515 * 0.0488088481701515.
+
+Let's do using maybe splitting: b = 4.88088481701515e-2.
+
+Square: (4.88088481701515e-2)^2 = (4.88088481701515^2) * 1e-4.
+
+Compute 4.88088481701515^2.
+
+Compute 4.88088481701515 * 4.88088481701515.
+
+We can approximate: 4.88^2 = 23.8144. Need more.
+
+Let's compute using high precision maybe with long multiplication.
+
+Alternatively, compute b^2 using (0.05 - 0.0011911518298485)^2? Since 0.05 - delta where delta = 0.05 - b = 0.05 - 0.0488088481701515 = 0.0011911518298485.
+
+Then b^2 = (0.05 - d)^2 = 0.0025 - 2*0.05*d + d^2 = 0.0025 - 0.1*d + d^2.
+
+Compute d = 0.0011911518298485.
+
+0.1*d = 0.00011911518298485.
+
+d^2 = (0.0011911518298485)^2 ≈ (1.191e-3)^2 = 1.418e-6 approx. Let's compute more precisely: 0.0011911518298485^2.
+
+Compute 1.1911518298485e-3 squared = (1.1911518298485^2)*1e-6.
+
+1.1911518298485^2: 1.191^2 ≈1.418; let's compute: 1.1911518298485 * 1.1911518298485.
+
+Compute: 1.1911518298485 * 1 =1.1911518298485
+*0.1911518298485 ≈? This is messy.
+
+But we can approximate d^2 ≈ 1.4188e-6. Let's compute more precisely later if needed.
+
+Thus b^2 ≈ 0.0025 - 0.00011911518298485 + 0.0000014188 ≈ 0.0023823036? Actually 0.0025 - 0.00011911518298485 = 0.00238088481701515; + d^2 ≈0.00238088481701515 + 0.0000014188 = 0.00238230361701515 approx.
+
+Thus b^2 ≈0.00238230361701515.
+
+Let's compute more precisely later.
+
+Now b^3 = b^2 * b ≈ 0.00238230361701515 * 0.0488088481701515.
+
+Compute: 0.00238230361701515 * 0.05 ≈0.0001191151808507575; subtract 0.00238230361701515 *0.0011911518298485? Actually easier: multiply directly.
+
+But maybe we can compute using series up to b^3 or b^5; we need cos b ≈ 1 - b^2/2 + b^4/24 - ... ; sin b ≈ b - b^3/6 + b^5/120 - ...
+
+Thus we need b^2, b^3, b^4, b^5.
+
+Let's compute b^2 precisely using high precision multiplication maybe with enough digits.
+
+We can use Python-like mental? Let's attempt to compute with 12-digit accuracy.
+
+Take b = 0.0488088481701515.
+
+We'll compute b^2 using high precision multiplication:
+
+Method: multiply 488088481701515 * 488088481701515 then scale by 10^-30? Actually b has 15 decimal digits after decimal? Let's treat as integer: b * 10^15 = 488088481701515? Actually 0.0488088481701515 * 1e15 = 48,808,848,170,151.5? Not integer. Let's avoid.
+
+Better: Use high precision approximate using known expansions: we can compute cos b and sin b using maybe known values: cos(0.0488) ≈ 0.998819? Actually cos small angle: cos ≈ 1 - θ^2/2. θ^2/2 = (rad) =0.0488088; θ^2 ≈0.0023823; half is 0.00119115; so cos ≈ 0.99880885. Actually 1 - 0.00119115 = 0.99880885. plus θ^4/24 term: θ^4 = (θ^2)^2 ≈ (0.0023823)^2 ≈ 0.000005674? Let's compute: 0.0023823^2 = (2.3823e-3)^2 =5.674e-6. Divide by 24 => 2.364e-7. So add ~0.000000236 => cos ≈0.99880909. Next term -θ^6/720 negligible (~1e-11). So cos b ≈0.99880909.
+
+Sin b ≈ θ - θ^3/6 + θ^5/120. θ^3 = θ*θ^2 ≈0.0488088*0.0023823 ≈0.0001163? Let's compute: 0.0023823*0.05 ≈0.000119115; subtract a bit: Actually 0.0023823*0.0488088 = 0.0023823*(0.05 -0.0011912) =0.000119115 -0.0023823*0.0011912 ≈0.000119115 -0.000002839 ≈0.000116276. So θ^3≈0.00011628. θ^3/6 ≈0.00001938. θ^5: θ^2 * θ^3 ≈0.0023823*0.00011628 ≈2.770e-7? Let's compute: 0.0023823*0.00011628 = 2.770e-7 (approx). /120 => 2.308e-9. So sin b ≈0.0488088 -0.00001938 +0.0000000023 ≈0.04878942. Actually 0.048808848 -0.00001938 =0.048789468; +2.3e-9 =0.048789470. So sin b ≈0.04878947.
+
+Thus cos b ≈0.99880909, sin b ≈0.04878947.
+
+Now compute cos ω = cos1 cos b - sin1 sin b.
+
+cos1 =0.5403023058681398
+sin1 =0.8414709848078965
+
+Compute cos1 * cos b: 0.5403023058681398 * 0.99880909 ≈ ?
+
+0.5403023058681398 * (1 - 0.00119091) ≈0.5403023058681398 -0.5403023058681398*0.00119091.
+
+Compute product: 0.5403023058681398*0.00119091 ≈0.000643? Let's compute: 0.5403*0.00119 ≈0.000642. So subtract: ~0.5403023 -0.000642 ≈0.5396603.
+
+Let's compute more precisely: 0.5403023058681398 * 0.00119091 = 0.5403023058681398 * (1.19091e-3) = (0.5403023058681398 *1.19091)/1000.
+
+0.5403023058681398 *1.19091 ≈0.5403023*1.19091 ≈0.643? Let's compute: 0.5403*1 =0.5403; *0.19091 ≈0.5403*0.19091≈0.103? Actually 0.5403*0.2=0.10806, subtract 0.5403*0.00909≈0.00491 =>0.10315. Sum=0.64345. So /1000 =>0.00064345. So cos1*cosb ≈0.5403023058681398 -0.00064345 ≈0.53965886.
+
+Now compute sin1 * sin b: sin1 * sin b ≈0.8414709848078965 * 0.04878947.
+
+Compute: 0.8414709848 *0.05 ≈0.04207355; subtract 0.8414709848 *0.00121053 (since 0.05 -0.04878947 =0.00121053). 0.8414709848*0.00121053 ≈0.001018? Let's compute: 0.84147*0.001 =0.00084147; *0.00021053≈0.84147*2.1053e-4≈0.000177? Actually 0.84147*0.0002=0.0001683; plus 0.84147*0.00001053≈0.00000886; sum ≈0.0001772. So total for 0.00121053 ≈0.0008415+0.0001772=0.0010187. So sin1*0.04878947 ≈0.04207355 -0.0010187 =0.04105485.
+
+Thus sin1*sinb ≈0.0410549.
+
+Now cos ω = cos1 cos b - sin1 sin b ≈0.53965886 -0.04105485 =0.49860401.
+
+Now sin ω = sin1 cos b + cos1 sin b.
+
+Compute sin1 cos b: sin1 *0.99880909 ≈0.8414709848*(1 -0.00119091) ≈0.8414709848 -0.8414709848*0.00119091.
+
+Compute 0.8414709848*0.00119091 ≈0.001001? Let's compute: 0.84147*0.001 =0.00084147; *0.00019091≈0.84147*1.9091e-4≈0.000160? Actually 0.84147*0.0002=0.0001683; subtract 0.84147*0.00000909≈0.00000765 =>0.0001606. Sum=0.00084147+0.0001606=0.00100207. So sin1 cos b ≈0.8414709848 -0.00100207 =0.84046891.
+
+Now cos1 sin b: 0.5403023058681398 * 0.04878947 ≈0.5403*0.05=0.027015; subtract 0.5403*0.00121053≈0.000654? Actually 0.5403*0.001 =0.0005403; *0.00021053≈0.5403*2.1053e-4≈0.0001138; sum≈0.0006541. So 0.027015 -0.000654 ≈0.026361.
+
+Thus cos1 sin b ≈0.026361.
+
+Now sin ω = 0.84046891 +0.026361 ≈0.8668299.
+
+Thus we have cos ω ≈0.4986040, sin ω ≈0.8668299.
+
+Check if these satisfy cos^2+sin^2≈1? Compute squares: 0.4986^2≈0.2486; 0.8668^2≈0.7514; sum≈1.0000. Good.
+
+Now we can iterate to get cos(n ω), sin(n ω) for n=0..17.
+
+Initialize:
+c0 = 1
+s0 = 0
+
+For n from 0 to 16 compute next:
+
+c_{n+1} = c_n * cos ω - s_n * sin ω
+s_{n+1} = s_n * cos ω + c_n * sin ω
+
+We'll compute with sufficient precision (maybe 12 decimal) to get final positions to 1e-6.
+
+Let's compute using high precision manually with maybe 10 decimal places.
+
+Set:
+cosw = C = 0.498604010 (approx)
+sinw = S = 0.866829900 (approx)
+
+We'll keep more digits: Let's compute C and S more precisely using our approximations. We'll try to refine.
+
+We had approximations:
+cos1 = 0.5403023058681398
+sin1 = 0.8414709848078965
+
+We computed cosb and sinb approx.
+
+Let's compute cosb and sinb more precisely using series up to b^4 maybe.
+
+We have b = 0.0488088481701515.
+
+We can compute b^2 precisely using high precision multiplication maybe with more digits.
+
+Let's compute b^2 using the method with d = 0.0011911518298485.
+
+b = 0.05 - d.
+
+b^2 = 0.0025 - 0.1*d + d^2.
+
+We have d = 0.0011911518298485.
+
+Compute 0.1*d = 0.00011911518298485.
+
+Now compute d^2 precisely:
+
+d = 0.0011911518298485.
+
+Square: (1.1911518298485e-3)^2 = (1.1911518298485^2) * 1e-6.
+
+Compute 1.1911518298485^2.
+
+We can compute using high precision: Let's do:
+
+1.1911518298485 * 1.1911518298485.
+
+Break: 1.1911518298485 * 1 = 1.1911518298485
+*0.1911518298485 = ?
+
+Alternatively use (a+b)^2: a=1.19, b=0.0011518298485.
+
+But maybe easier: use calculator-like approach: we can compute d^2 using approximation: (0.00119115)^2 ≈ 1.4188e-6 as earlier. Let's compute more precisely.
+
+Compute d = 0.0011911518298485.
+
+Compute d^2 = d * d.
+
+We can compute using splitting: d = 0.00119 + 0.0000011518298485.
+
+0.00119^2 = 0.0000014161
+
+Cross term: 2*0.00119*0.0000011518298485 = 2 * (0.00119 * 0.0000011518298485) = 2 * (1.19e-3 *1.1518298485e-6) = 2 * (1.371e-9) ≈2.742e-9.
+
+Square of second term: (0.0000011518298485)^2 ≈1.327e-12.
+
+Sum: 0.0000014161 + 0.000000002742 + 0.000000000001327 ≈0.000001418843327.
+
+Thus d^2 ≈1.4188433e-6.
+
+Let's compute more precisely: maybe 1.41884e-6.
+
+Thus b^2 = 0.0025 - 0.00011911518298485 + 0.0000014188433 ≈ 0.00238230366031515? Actually 0.0025 - 0.00011911518298485 = 0.00238088481701515. Add d^2 0.0000014188433 => 0.00238230366031515.
+
+Thus b^2 ≈0.00238230366031515.
+
+Now b^3 = b^2 * b.
+
+Compute b^3 = 0.00238230366031515 * 0.0488088481701515.
+
+We can compute using multiplication: 0.00238230366031515 * 0.05 = 0.0001191151830157575 (since *0.05). Then subtract 0.00238230366031515 *0.0011911518298485 (since 0.05 - b = d). Actually b = 0.05 - d, so product = b^2 * (0.05 - d) = b^2*0.05 - b^2*d.
+
+We have b^2*0.05 = 0.0001191151830157575 (as above). Now compute b^2*d.
+
+b^2*d = 0.00238230366031515 * 0.0011911518298485.
+
+Compute: 0.00238230366 *0.00119115 ≈ (2.3823e-3)*(1.19115e-3)=2.3823*1.19115 e-6 = (2.3823*1.19115) e-6.
+
+Compute 2.3823*1.19115 ≈ 2.3823*1 =2.3823; +2.3823*0.19115≈0.455? Actually 2.3823*0.2=0.47646; subtract 2.3823*0.00885≈0.02109 =>0.45537. Sum ≈2.83767. So product ≈2.83767e-6.
+
+Thus b^2*d ≈2.8377e-6.
+
+Thus b^3 ≈0.0001191151830157575 - 0.00000283767 ≈0.00011627751.
+
+Let's compute more precisely: 0.0001191151830157575 - 0.00000283766 = 0.0001162775230157575.
+
+Thus b^3 ≈1.16277523e-4.
+
+Now b^4 = b^3 * b.
+
+b^4 = b^3 * b = (b^3)*(0.05 - d) = b^3*0.05 - b^3*d.
+
+b^3*0.05 = 0.0001162775230157575 *0.05 = 0.000005813876150787875.
+
+Now b^3*d = 0.0001162775230157575 *0.0011911518298485 ≈ (1.16278e-4)*(1.19115e-3)=1.16278*1.19115 e-7 = (1.16278*1.19115) e-7.
+
+Compute 1.16278*1.19115 ≈ 1.16278*1 =1.16278; +1.16278*0.19115≈0.222? Actually 1.16278*0.2=0.232556; subtract 1.16278*0.00885≈0.01029 =>0.22227. Sum≈1.38505. So product ≈1.38505e-7 =0.000000138505.
+
+Thus b^4 ≈0.000005813876150787875 - 0.000000138505 ≈0.000005675371150787875.
+
+So b^4 ≈5.67537e-6.
+
+Now b^5 = b^4 * b.
+
+b^5 = b^4 * (0.05 - d) = b^4*0.05 - b^4*d.
+
+b^4*0.05 = 5.675371150787875e-6 *0.05 = 2.8376855753939375e-7.
+
+b^4*d = 5.675371150787875e-6 *0.0011911518298485 ≈ (5.67537e-6)*(1.19115e-3)=5.67537*1.19115 e-9 = (5.67537*1.19115) e-9.
+
+Compute 5.67537*1.19115 ≈5.67537*1 =5.67537; +5.67537*0.19115≈1.084? Actually 5.67537*0.2=1.135074; minus 5.67537*0.00885≈0.0502 =>1.0849. Sum≈6.7603. So product ≈6.7603e-9 =0.0000000067603.
+
+Thus b^5 ≈2.837685575e-7 - 6.7603e-9 = 2.7700825e-7.
+
+Thus b^5 ≈2.77008e-7.
+
+Now we can compute cos b and sin b using series:
+
+cos b = 1 - b^2/2 + b^4/24 - b^6/720 + ... We'll need up to b^4 maybe.
+
+b^2/2 = 0.00238230366031515 /2 =0.00119115183015

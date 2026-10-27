@@ -1,0 +1,7 @@
+{
+  "modelo": "google/gemini-3.5-flash",
+  "run": 2,
+  "tempo_geracao_s": 26.79,
+  "tokens": 5053,
+  "linhas_codigo": 62
+}

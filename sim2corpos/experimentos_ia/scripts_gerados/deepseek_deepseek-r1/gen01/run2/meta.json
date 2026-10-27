@@ -1,0 +1,7 @@
+{
+  "modelo": "deepseek/deepseek-r1",
+  "run": 2,
+  "tempo_geracao_s": 370.12,
+  "tokens": 6862,
+  "linhas_codigo": 70
+}

@@ -1,0 +1,7 @@
+{
+  "modelo": "nvidia/nemotron-3-super-120b-a12b:free",
+  "run": 3,
+  "tempo_geracao_s": 198.97,
+  "tokens": 4919,
+  "linhas_codigo": 65
+}

@@ -1,0 +1,37 @@
+**Computing positions accurately**
+
+I’m working on the equations: x = a(cos E - e) and y = a sqrt(1-e^2) sin E, with e being tiny. I also need to integrate the circular formula. The goal is to produce a numeric table with 18 rows to 6 decimal places, which can be challenging without a calculator. I should compute cos and sin at integers, ensuring high precision to account for small differences due to COM drift and eccentricity. I need to check the rounding effects, especially around eccentric corrections.**Calculating parameters for integration**
+
+I need to include a lot of details here for high accuracy up to 6 decimal places. I might numerically integrate given truncation but prefer to compute analytically this time. I’m considering using a small-e expansion for relative near-circular orbits to avoid solving Kepler's equation and combine it with the center of mass. First, I’ll compute some values, like total mass and mass ratios. The calculations will involve checking decimals for accuracy, especially around relative orbit parameters and velocities. This should help establish a solid foundation for the final computations.**Exploring orbital parameters**
+
+Alright, I’ve figured out that the eccentricity \( e = \frac{V^2}{\mu} - 1 \) comes out to be about \( 2.895281818183e-7 \). That’s satisfying! Next, I’ll calculate the semi-major axis and periapsis using related formulas. It’s crucial to establish mean motion and whether I’ll use true anomaly or mean anomaly as I compute \( x \) and \( y \) in an inertial frame. The first-order expansion for small \( e \) is particularly important for accuracy, especially in finding the relationships between these angles and parameters.**Calculating positions accurately**
+
+I’m expanding the parameters with \( \theta = \omega t \) and deriving mean anomaly \( M \). The position equations for \( x \) and \( y \) involve small corrections for eccentricity terms and need accurate \( \cos \) and \( \sin \) values. I could consider using universal variables, but the small expansion looks fine. I'll compute \( \cos \) and \( \sin \) for \( t \) ranging from 0 to 17, with \( \omega \) set to about 1.0488. I need to ensure high precision, aiming for six decimals while preparing a robust computation table for 18 rows. I'm determined to get this right!**Utilizing high-precision calculations**
+
+I'm deciding to use high-precision manual recurrence to compute trigonometric values accurately. First, I need to find \( \cos(\omega) \) and \( \sin(\omega) \), where \( \omega \approx 1.0488 \) rad, close to \( \frac{\pi}{3} \). I'll calculate the difference \( d \) between them and use that to find the sine and cosine values through approximations. This method involves careful calculation of small numbers to avoid error accumulation, aiming for high precision across the table I’ll generate. Let's move forward with those calculations!**Calculating trigonometric values carefully**
+
+I’m continuing my calculations with high precision. For \( d^3 \), I’ve arrived at approximately \( 4.18337478 \times 10^{-9} \), which gives me an adjusted sine value. Now, for \( \cos(\omega) \), I need to compute a few terms iteratively, breaking down the multiplications into manageable parts. The sine value is similarly refined, reaching about \( 0.8668299 \). It seems necessary to implement a recurrence relation for the \( z \) calculations, which will involve repetitive multiplications. It’s a bit tedious, but I want to ensure I maintain precision through every step!**Reducing angles for simplification**
+
+I’m considering simplifying the angle calculations using multiples of \( \pi/3 \). Since \( \omega = \pi/3 + d \), I can define the angle for each time integer \( t \) as \( \theta = t\pi/3 + t d \), which makes things easier. For each \( t \), I’ll compute the sine and cosine values using the small \( \phi = t \cdot d \). I’ll apply a series expansion to keep everything precise, aiming for high accuracy. I’m excited about this approach!**Calculating circular positions with corrections**
+
+I’m looking into calculating the circular x and y positions, adding first-order eccentric corrections. With \( e = 2.895281818181818e-7 \), I’ll adjust \( \delta x \) and check the previous x expansion in terms of \( \theta = \omega t \). I’ll verify using the formula \( x \approx \cos M + e[\text{...}] \) to derive x and y positions accurately. At \( t=0 \), both positions should yield zero adjustments. It all looks good, and I also have the absolute position as \( R_{0_x} = 9.090909090e-8 \).**Calculating positions and angles**
+
+I'm calculating the y position \( R_y = V_{cm_y} \times t = 2.727272727e-7 t \) and adjusting positions \( x_1 \), \( y_1 \), \( x_2 \), and \( y_2 \) using relative positions. I need to round all outputs to six decimal places. I'll compute the relative positions to enhance eccentric corrections and confirm the drift \( \phi \) related to the periodic cycle of about 6 steps. For small angles \( \phi \), I'll generate a table for angles up to \( t=17 \) and calculate the sine and cosine using series expansions for accuracy.**Calculating small angles**
+
+For the maximum angle \( \phi \) of 0.0274, I find that \( \frac{\phi^3}{6} \approx 3.43e-6 \) and \( \frac{\phi^5}{120} \) gives a negligible contribution. I’m considering using a table to calculate values with up to 9 decimal precision while aiming for final results around 6 decimals.
+
+I'll shift between using small-angle approximations, recurrence, and series for sine and cosine. Each step will help maintain accuracy, ensuring we stay within \( 1e-8 \). I’ll include constants and use small angle approximations for derivatives to streamline the calculations.**Computing values for angles**
+
+I realize that for the angle \( \phi \), I don’t need precision down to \( 1e-8 \), but I'll include it for accuracy. So, using the approximation:
+
+\[
+\cos \phi_t \approx 1 - t^2 A2 + t^4 A4
+\]
+
+At \( t = 17 \), for the fourth power, I find it gives a term worth including. I'll create a table for \( \sin \phi \) and \( \cos \phi \) with 9 decimal places to ensure enough accuracy.
+
+Using my constants \( D = 0.001611296973554 \) will help compute these values effectively, allowing for some negligible terms as we finalize the calculations. Let's proceed with that!**Calculating sine values**
+
+I'm working through some calculations for sine values using \( B \) and \( t^3 \) terms. For \( t = 1 \), \( sin \) calculated matches the expected value. As I move up to \( t = 2 \) and beyond, I’m keeping track of the calculations systematically, including small adjustments like \( C \).
+
+I need to stay accurate for terms, especially since those small contributions will accumulate. Rounding and ensuring precision up to 9 decimal places seems appropriate, especially for smaller values. Let’s keep going and finalize these sine values for all points.

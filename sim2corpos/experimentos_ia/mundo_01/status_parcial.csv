@@ -1,0 +1,7 @@
+modelo,deu_numeros,abordagem,RMSE,veredito,tam_resposta
+deepseek/deepseek-r1,sim,indefinida,0.904,orbita ok,740
+anthropic/claude-opus-4.8,sim,indefinida,2.139,corpo escapou,740
+google/gemini-3.5-flash,nao,indefinida,,erro do provedor,65
+nvidia/nemotron-3-super-120b-a12b-free,nao,mista (analitica + numerica),,"raciocinio longo, sem tabela (provavel corte por max_tokens)",30244
+openai/gpt-5.5-pro,nao,solucao analitica (Kepler/orbita),,"raciocinio longo, sem tabela (provavel corte por max_tokens)",6909
+openai/gpt-oss-20b-free,nao,mista (analitica + numerica),,"raciocinio longo, sem tabela (provavel corte por max_tokens)",8927

@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+jupyter
+ipywidgets
+requests
+urllib3<2  # macOS: evita NotOpenSSLWarning (Python compilado com LibreSSL)
+python-dotenv  # carrega a chave de API do arquivo .env
+scipy

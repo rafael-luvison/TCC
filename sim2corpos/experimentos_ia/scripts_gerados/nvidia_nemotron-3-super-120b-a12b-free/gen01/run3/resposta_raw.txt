@@ -1,0 +1,67 @@
+```python
+import numpy as np
+
+def deriv(state, m1, m2):
+    x1, y1, x2, y2, vx1, vy1, vx2, vy2 = state
+    dx = x2 - x1
+    dy = y2 - y1
+    r2 = dx * dx + dy * dy
+    r3 = r2 * np.sqrt(r2)
+    ax1 = m2 * dx / r3
+    ay1 = m2 * dy / r3
+    ax2 = -m1 * dx / r3
+    ay2 = -m1 * dy / r3
+    return np.array([vx1, vy1, vx2, vy2, ax1, ay1, ax2, ay2])
+
+def rk4_step(state, dt, m1, m2):
+    k1 = deriv(state, m1, m2)
+    k2 = deriv(state + 0.5 * dt * k1, m1, m2)
+    k3 = deriv(state + 0.5 * dt * k2, m1, m2)
+    k4 = deriv(state + dt * k3, m1, m2)
+    return state + (dt / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
+
+def integrate(m1, m2, state0, t0, t_end, dt):
+    times = [t0]
+    states = [state0.copy()]
+    t = t0
+    state = state0.copy()
+    while t < t_end - 1e-14:
+        step = min(dt, t_end - t)
+        state = rk4_step(state, step, m1, m2)
+        t += step
+        times.append(t)
+        states.append(state.copy())
+    return np.array(times), np.array(states)
+
+def main():
+    m1 = 1.0
+    m2 = 0.1
+    # initial conditions
+    x1_0 = -0.090909
+    y1_0 = 0.0
+    x2_0 = 0.909091
+    y2_0 = 0.0
+    vx1_0 = 0.0
+    vy1_0 = -0.095346
+    vx2_0 = 0.0
+    vy2_0 = 0.953463
+    state0 = np.array([x1_0, y1_0, x2_0, y2_0,
+                       vx1_0, vy1_0, vx2_0, vy2_0], dtype=float)
+    t0 = 0.0
+    t_end = 17.0
+    dt = 0.0001  # integration step
+    times, states = integrate(m1, m2, state0, t0, t_end, dt)
+    # sample at integer times t = 0..17
+    t_int = np.arange(0, 18, 1)  # 0,1,...,17
+    x1 = np.interp(t_int, times, states[:, 0])
+    y1 = np.interp(t_int, times, states[:, 1])
+    x2 = np.interp(t_int, times, states[:, 2])
+    y2 = np.interp(t_int, times, states[:, 3])
+    # output CSV
+    print("t,x1,y1,x2,y2")
+    for ti, xi1, yi1, xi2, yi2 in zip(t_int, x1, y1, x2, y2):
+        print(f"{int(ti)},{xi1:.12f},{yi1:.12f},{xi2:.12f},{yi2:.12f}")
+
+if __name__ == "__main__":
+    main()
+```

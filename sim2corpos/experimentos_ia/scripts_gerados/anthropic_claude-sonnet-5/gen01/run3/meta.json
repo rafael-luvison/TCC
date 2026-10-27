@@ -1,0 +1,7 @@
+{
+  "modelo": "anthropic/claude-sonnet-5",
+  "run": 3,
+  "tempo_geracao_s": 8.15,
+  "tokens": 1190,
+  "linhas_codigo": 42
+}

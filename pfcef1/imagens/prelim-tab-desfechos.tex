@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+  \caption{Desfecho de cada modelo nos três formatos dos ensaios iniciais. API direta: tabela pedida sem programa, julho de 2026. Aplicativo: mesmo pedido pela interface do modelo com ferramenta de execução, outubro de 2026. Script: enunciado exigindo programa em Python, três gerações, agosto de 2026.}
+  \begin{tabular}{L{3.0cm}L{3.4cm}L{3.4cm}L{3.4cm}}
+    \toprule
+    \textbf{Modelo} & \textbf{API direta} & \textbf{Aplicativo} & \textbf{Script} \\
+    \midrule
+    Claude Opus 4.8 & tabela errada (erro 2,14) & tabela correta: RK4 próprio, passo $10^{-5}$ (erro $4{,}1\times10^{-6}$) & não solicitado \\
+    Claude Sonnet 5 & sem texto: resposta cortada no limite de tokens & não solicitado & 3 de 3 corretos; método: SciPy \\
+    Claude Haiku 4.5 & não solicitado & tabela errada: SciPy, tolerância padrão (erro 0,49) & não solicitado \\
+    DeepSeek R1 & tabela errada (erro 0,90) & não solicitado & 3 de 3 corretos; método: RK4 próprio, próprio não identificado \\
+    Gemini 3.5 Flash & erro do provedor & não solicitado & 3 de 3 corretos; método: SciPy \\
+    GPT-5.5 Pro & sem tabela: raciocínio cortado no limite de tokens & não solicitado & não solicitado \\
+    gpt-oss-20b (aberto) & sem tabela: raciocínio cortado no limite de tokens & não solicitado & não solicitado \\
+    Nemotron 3 Super 120B (aberto) & não solicitado & não solicitado & 3 de 3 corretos; método: próprio não identificado, SciPy, RK4 próprio \\
+    Nemotron 3 Nano 30B (aberto) & não solicitado & não solicitado & sem resposta: limite de requisições \\
+    Gemma 4 26B (aberto) & não solicitado & não solicitado & sem resposta: limite de requisições \\
+    Gemma 4 31B (aberto) & sem resposta: limite de requisições & não solicitado & sem resposta: limite de requisições \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:prelim-desfechos}
+  \source{Autor}
+\end{table}

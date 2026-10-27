@@ -1,0 +1,9 @@
+modelo,status,linhas,tokens
+anthropic/claude-opus-4.8,ERRO: name 're' is not defined,0,
+anthropic/claude-sonnet-5,ERRO: resposta sem texto (finish_reason=length); provável corte por max_tokens ou só raciocínio,0,
+openai/gpt-5.5-pro,ERRO: name 're' is not defined,0,
+google/gemini-3.5-flash,ERRO: name 're' is not defined,0,
+deepseek/deepseek-r1,ERRO: name 're' is not defined,0,
+openai/gpt-oss-20b:free,ERRO: name 're' is not defined,0,
+google/gemma-4-31b-it:free,ERRO: 429 Client Error: Too Many Requests for url: https://openrouter.ai/api/v1/chat/completions,0,
+nvidia/nemotron-3-super-120b-a12b:free,ERRO: name 're' is not defined,0,
